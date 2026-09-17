@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile</title>
+<style>
+  /* ============ COLORS & FONT — edit these to change the whole theme ============ */
+  :root {
+    --bg: #f7f5f2;
+    --card-bg: #ffffff;
+    --accent: #2f6f5e;
+    --text-main: #1e1e1e;
+    --text-muted: #6b6b6b;
+    --border: #e4e0da;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text-main);
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  section {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin: 0 0 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.05rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-top: 0;
+  }
+
+  /* ---- PHOTO ---- */
+  .profile-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 1rem;
+    border: 3px solid var(--accent);
+  }
+
+  /* ---- LINK ---- */
+  a.profile-link {
+    color: var(--accent);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid var(--accent);
+  }
+  a.profile-link:hover {
+    opacity: 0.7;
+  }
+
+  /* ---- VIDEO ---- */
+  video {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    margin-top: 0.5rem;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ============ PHOTO + NAME ============ -->
+    <section style="text-align:center;">
+      <!-- Replace "your-photo.jpg" with the filename of your own image,
+           kept in the same folder as this HTML file -->
+      <img class="profile-photo" src="https://engr.ku.edu/sites/engr/files/styles/crop_thumbnail/public/images/Carter%20Gray-%2028.jpg?itok=9eZNo8R-" alt="Your name">
+      <h1>Carter Gray</h1>
+      <p style="color:var(--text-muted); margin:0;">Undergraduate Researcher</p>
+    </section>
+
+    <!-- ============ TEXT ============ -->
+    <section>
+      <h2>About</h2>
+      <p>
+        I like biochemistry and programming!!
+      </p>
+    </section>
+
+    <!-- ============ HYPERLINK ============ -->
+    <section>
+      <h2>Find Me Online</h2>
+      <p>
+        Check out my work on
+        <a class="profile-link" href="https://github.com/CarterGary-17" target="_blank">GitHub</a>.
+      </p>
+    </section>
+
+    <!-- ============ VIDEO ============ -->
+    <section>
+    <h2>Video</h2>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/badAmMkKFbk?si=7EesMGzJ2BibCx2T"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  </section>
+
+  </div>
+</body>
+</html>

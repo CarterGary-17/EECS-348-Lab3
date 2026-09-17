@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Font & Border Control</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  /* The paragraph we're controlling. Border is set here so it's
+     visible even before the user changes anything. */
+  #demo-paragraph {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+  }
+
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+  }
+
+  .control-group input {
+    width: 70px;
+    padding: 0.3rem;
+  }
+
+  #error-msg {
+    color: #b00020;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    min-height: 1.2em;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+  <h1>CSS Font & Border Control</h1>
+
+  <p id="demo-paragraph">
+    This is some dummy text. Lorem ipsum dolor sit amet, consectetur
+    adipiscing elit. Change the values below to update my text color,
+    border color, and border width.
+  </p>
+
+  <div class="controls">
+    <div class="control-group">
+      <label for="red-input">Red (0-255)</label>
+      <input type="number" id="red-input" min="0" max="255" value="0">
+    </div>
+
+    <div class="control-group">
+      <label for="green-input">Green (0-255)</label>
+      <input type="number" id="green-input" min="0" max="255" value="0">
+    </div>
+
+    <div class="control-group">
+      <label for="blue-input">Blue (0-255)</label>
+      <input type="number" id="blue-input" min="0" max="255" value="0">
+    </div>
+
+    <div class="control-group">
+      <label for="width-input">Border width (px)</label>
+      <input type="number" id="width-input" min="0" max="50" value="2">
+    </div>
+
+    <button id="apply-btn">Apply</button>
+  </div>
+
+  <p id="error-msg"></p>
+
+  <script>
+    // Grab references to all the elements we need
+    const paragraph = document.getElementById('demo-paragraph');
+    const redInput = document.getElementById('red-input');
+    const greenInput = document.getElementById('green-input');
+    const blueInput = document.getElementById('blue-input');
+    const widthInput = document.getElementById('width-input');
+    const applyBtn = document.getElementById('apply-btn');
+    const errorMsg = document.getElementById('error-msg');
+
+    // Checks that a value is a number between min and max (inclusive)
+    function isValidNumber(value, min, max) {
+      const num = Number(value);
+      return value !== '' && !isNaN(num) && num >= min && num <= max;
+    }
+
+    function updateStyles() {
+      const red = redInput.value;
+      const green = greenInput.value;
+      const blue = blueInput.value;
+      const width = widthInput.value;
+
+      // Validate RGB values
+      if (!isValidNumber(red, 0, 255) ||
+          !isValidNumber(green, 0, 255) ||
+          !isValidNumber(blue, 0, 255)) {
+        errorMsg.textContent = 'RGB values must be numbers between 0 and 255.';
+        return;
+      }
+
+      // Validate border width
+      if (!isValidNumber(width, 0, 50)) {
+        errorMsg.textContent = 'Border width must be a number between 0 and 50.';
+        return;
+      }
+
+      // Clear any previous error
+      errorMsg.textContent = '';
+
+      // Build the color string and apply styles
+      const colorString = `rgb(${red}, ${green}, ${blue})`;
+      paragraph.style.color = colorString;
+      paragraph.style.borderColor = colorString;
+      paragraph.style.borderWidth = `${width}px`;
+    }
+
+    // Update on button click
+    applyBtn.addEventListener('click', updateStyles);
+
+    // Also update live as the user types (optional - comment out
+    // this block if you only want the button to apply changes)
+    [redInput, greenInput, blueInput, widthInput].forEach(input => {
+      input.addEventListener('input', updateStyles);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Verification</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+  }
+
+  .field {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    margin-bottom: 0.3rem;
+  }
+
+  input {
+    padding: 0.5rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Password Verification</h1>
+
+  <div class="field">
+    <label for="password1">Password:</label>
+    <input type="password" id="password1">
+  </div>
+
+  <div class="field">
+    <label for="password2">Confirm Password:</label>
+    <input type="password" id="password2">
+  </div>
+
+  <button id="check-btn">Check</button>
+
+  <script>
+    const password1 = document.getElementById('password1');
+    const password2 = document.getElementById('password2');
+    const checkBtn = document.getElementById('check-btn');
+
+    function checkPasswords() {
+      const pass1 = password1.value;
+      const pass2 = password2.value;
+
+      if (pass1.length < 8 || pass2.length < 8 || pass1 !== pass2) {
+        alert('Password must be at least 8 characters long and both passwords must match.');
+      } else {
+        alert('Passwords matched.');
+      }
+    }
+
+    checkBtn.addEventListener('click', checkPasswords);
+  </script>
+
+</body>
+</html>

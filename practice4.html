@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Multiplication Table</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+  }
+
+  form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Multiplication Table</h1>
+
+  <p>Enter a number below. This form sends your number to a separate
+     PHP file, which builds and displays the table.</p>
+
+  <!-- This form does NOT contain any PHP. When submitted, the browser
+       sends the "number" value to generate_table.php as a URL parameter
+       (e.g. generate_table.php?number=5) -->
+  <form method="get" action="generate_table.php">
+    <label for="number">Enter a number:</label>
+    <input type="number" id="number" name="number" min="1" required>
+    <button type="submit">Generate</button>
+  </form>
+
+</body>
+</html>

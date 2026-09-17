@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Multiplication Table</title>
+<title>Table Result</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -26,10 +26,9 @@
     background: #eee;
   }
 
-  form {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+  a {
+    display: inline-block;
+    margin-top: 1rem;
   }
 </style>
 </head>
@@ -37,25 +36,23 @@
 
   <h1>Multiplication Table</h1>
 
-  <!-- Form sends the number back to this same file using GET -->
-  <form method="get" action="practice4.php">
-    <label for="number">Enter a number:</label>
-    <input type="number" id="number" name="number" min="1" required>
-    <button type="submit">Generate</button>
-  </form>
-
   <?php
-    // Check whether a number was submitted
-    if (isset($_GET['number']) && $_GET['number'] !== '') {
+    // This file only runs the logic; the form that sends data to it
+    // lives in table.html
+
+    if (!isset($_GET['number']) || $_GET['number'] === '') {
+      echo '<p>No number was provided. Please go back and enter one.</p>';
+    } else {
 
       $number = (int) $_GET['number'];
 
       if ($number < 1) {
         echo '<p>Please enter a number greater than 0.</p>';
       } else {
+        echo '<p>Table for numbers 1 through ' . $number . ':</p>';
         echo '<table>';
 
-        // ---- Header row: column indexes 0 through $number ----
+        // ---- Header row: column indexes 1 through $number ----
         echo '<tr><th>&times;</th>'; // top-left corner cell
         for ($col = 1; $col <= $number; $col++) {
           echo '<th>' . $col . '</th>';
@@ -78,6 +75,8 @@
       }
     }
   ?>
+
+  <a href="table.html">&larr; Back</a>
 
 </body>
 </html>
